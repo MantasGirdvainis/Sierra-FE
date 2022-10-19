@@ -15,4 +15,7 @@ code {
 
 :root {
   --secondary: #61dafb;
+  --black: #000000;
+  --zIndexHeader: 100;
 }
+

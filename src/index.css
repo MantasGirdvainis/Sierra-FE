@@ -14,8 +14,10 @@ code {
 
 
 :root {
-  --secondary: #61dafb;
   --black: #000000;
-  --zIndexHeader: 100;
+  --grey: #c7c7c7;
+  --paper: 	#fafafa;
+  --secondary: #61dafb;
+  --white: #fff;
 }
 

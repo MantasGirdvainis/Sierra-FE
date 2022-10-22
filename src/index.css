@@ -19,5 +19,7 @@ code {
   --paper: 	#fafafa;
   --secondary: #61dafb;
   --white: #fff;
+
+  --zIndexHeader: 100;
 }
 

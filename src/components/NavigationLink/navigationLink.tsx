@@ -10,7 +10,6 @@ type NavigationLinkProps = {
 }
 
 const NavigationLink = ({ additionalStyles = [], name, to}: NavigationLinkProps): JSX.Element => {
-
     return (
         <span>
             <NavLink className={({ isActive })=> 

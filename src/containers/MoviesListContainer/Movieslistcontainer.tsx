@@ -5,13 +5,17 @@ import Loader from 'components/Loader/loader';
 import styles from './MoviesListContainer.module.css';
 
 const MoviesListContainer = (): JSX.Element => {
-  const { data } = useQuery('movies', getMovies)
+  const { isLoading, isError, data } = useQuery('movies', getMovies)
   
-  if (data) {
-    return <div className={styles.movieListContainer}>{JSON.stringify(data)}</div>;
+  if (isLoading) {
+    return <Loader />;
   } 
 
-  return  <Loader />;
+  if (isError) {
+    return <span>Error</span>
+  }
+
+  return <div className={styles.movieListContainer}>{JSON.stringify(data)}</div>;
  
 };
 

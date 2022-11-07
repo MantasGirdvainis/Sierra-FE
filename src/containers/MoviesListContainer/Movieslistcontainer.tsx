@@ -6,20 +6,19 @@ import styles from './MoviesListContainer.module.css';
 import MovieCard from './MovieCard';
 
 const MoviesListContainer = (): JSX.Element => {
-  const { isLoading, isError, data } = useQuery('movies', getMovies)
+  const { isLoading, isFetching, data } = useQuery('movies', getMovies)
   
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   } 
 
-  if (isError) {
-    return <span>Error</span>
+  const renderMovies = () => {
+    return data?.movies.map((movie) => <MovieCard key={movie.id}  {...movie}/>)
   }
 
   return (
-    <div className={styles.movieListContainer}>
-      <MovieCard {...data?.movies[0]} />
-      </div>
+    <div className={styles.movieListContainer}>{renderMovies()}</div>
+
   )
   };
 

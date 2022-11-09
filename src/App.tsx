@@ -8,7 +8,6 @@ import Footer from './components/Footer/footer';
 
 function App(): JSX.Element {
   
-
   return (
     <BrowserRouter>
       <Layout footer={<Footer />} header={<Header />}>

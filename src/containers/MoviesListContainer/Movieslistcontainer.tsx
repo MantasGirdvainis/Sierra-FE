@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import { getMovies } from 'api/movies/movies';
 import Loader from 'components/Loader/loader';
 
+
 import styles from './MoviesListContainer.module.css';
 import MovieCard from './MovieCard';
 

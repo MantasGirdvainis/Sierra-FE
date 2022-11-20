@@ -1,4 +1,5 @@
 export const RouteKey = {
     Index: '/',
-    Movies: '/movies'
+    Movies: '/movies',
+    Movie: 'movie/:id'
 };

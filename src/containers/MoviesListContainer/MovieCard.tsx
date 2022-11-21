@@ -15,7 +15,6 @@ const MovieCard = ({ title, voteAverage, releaseDate, posterPath, movieId }: Mov
             <Link to={movieLink}>
             <img alt={`${title}-movie-title`} className={styles.movieImage} loading='lazy' src={posterPath} />
             </Link>
-            
                 <div className={styles.movieInfoWrapper}>
                      <p className={styles.movieInfoParagraph}>
                         <span className={styles.voteAverage}><StarIcon className={styles.icon} />{voteAverage}</span>

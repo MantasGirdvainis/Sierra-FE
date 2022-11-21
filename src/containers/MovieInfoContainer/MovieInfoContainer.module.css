@@ -1,6 +1,5 @@
 .backdropImage {
     background-position: right -200px top;
-
     padding: 0 50px;
 }
 
@@ -33,7 +32,6 @@
 }
 
 .movieDataHeader {
-
     text-align: baseline;
 }
 
@@ -42,7 +40,6 @@
 }
 
 .movieDataHeader > h3 {
-
     font-weight: 400;
     margin:5px 0 0;
 
@@ -50,7 +47,6 @@
 
 .movieDataHeaderDate {
     font-size: 14px;
-
 }
 
 .tagList {

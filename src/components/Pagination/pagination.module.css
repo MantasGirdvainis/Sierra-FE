@@ -1,0 +1,44 @@
+.paginationList {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+.paginationItem {
+  align-items: center;
+  border: 1px solid var(--grey);
+  border-radius: 16px;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  margin: 5px;
+  min-width: 16px;
+  padding: 5px;
+}
+.paginationItem:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+  fill: var(--white);
+}
+.arrowRight {
+  height: 12px;
+  width: 12px;
+  transform: rotate(180deg);
+}
+.arrowLeft {
+  height: 12px;
+  width: 12px;
+}
+.button {
+  background: none;
+  border: none;
+color: inherit;
+  cursor: pointer;
+  font: inherit;
+  height: 100%;
+  outline: inherit;
+padding: 0;
+  width: 100%;
+}

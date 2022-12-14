@@ -2,8 +2,8 @@ import { get } from "api/shared/methods";
 
 import { MoviesResponse, MovieDetails } from "./types";
 
-export async function getMovies(): Promise<MoviesResponse> {
-    const { data } = await get<MoviesResponse>('movies?page=1');
+export async function getMovies(page:number): Promise<MoviesResponse> {
+    const { data } = await get<MoviesResponse>(`movies?page=${page}`);
     return data;
 }
 

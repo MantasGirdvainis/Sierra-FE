@@ -2,7 +2,7 @@
 import { usePagination, DOTS } from "hooks/usePagination";
 import { ArrowRight } from "components/Icons";
 
-import styles from './Pagination.module.css';
+import styles from './pagination.module.css';
 
 type PaginationType = {
     onPageChange: (page:number) => void,

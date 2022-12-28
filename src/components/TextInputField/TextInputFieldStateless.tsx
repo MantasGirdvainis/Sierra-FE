@@ -7,9 +7,7 @@ type Props = {
 const TextInputFieldStateless = ({placeholder}:Props):JSX.Element => {
 
     return (
-        <div>
         <input className={styles.inputText} placeholder={placeholder} type="text"/>
-        </div>
     )
 };
 

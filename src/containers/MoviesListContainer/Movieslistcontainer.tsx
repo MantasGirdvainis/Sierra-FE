@@ -3,6 +3,7 @@ import { getMovies } from 'api/movies/movies';
 import Loader from 'components/Loader/loader';
 import { useSearchParams } from 'react-router-dom';
 
+
 import Pagination from '../../components/Pagination/pagination';
 import styles from './MoviesListContainer.module.css';
 import MovieCard from './MovieCard';

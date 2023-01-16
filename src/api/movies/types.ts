@@ -32,7 +32,7 @@ export type Movie = {
     voteCount: number;
   };
   
-  type Genre = {
+  export type Genre = {
     id: number;
     name: string;
   };
@@ -55,3 +55,9 @@ export type Movie = {
     name: string;
   };
 
+  export type MovieFilter = {
+    title?: string;
+    genres?: string[];
+    sort?: string;
+  };
+  

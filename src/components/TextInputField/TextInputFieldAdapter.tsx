@@ -11,4 +11,5 @@ const TextInputFieldAdapter = (props: TextInputFieldStatelessProps & FieldProps)
 
   return <TextInputFieldStateless error={error} value={field.value} onBlur={field.onBlur} onChange={field.onChange} {...rest} />;
 };
+
 export default TextInputFieldAdapter;

@@ -1,0 +1,16 @@
+.button {
+	background: var(--secondary);
+	border: none;
+	border-radius: 3px;
+	color: var(--white);
+	cursor: pointer;
+	font: inherit;
+	outline: inherit;
+	padding: 10px 15px;
+}
+.button:hover {
+	filter: brightness(90%);
+}
+.button:focus {
+	outline: 2px solid -webkit-focus-ring-color;
+}

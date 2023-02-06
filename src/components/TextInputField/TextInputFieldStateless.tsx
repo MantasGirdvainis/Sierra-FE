@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
-import styles from './TextInputFieldStateless.module.css'
+import styles from './TextInputField.module.css';
 
 export type TextInputFieldStatelessProps = InputHTMLAttributes<HTMLInputElement> & {
     label?: string;

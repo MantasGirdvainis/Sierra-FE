@@ -14,12 +14,14 @@ code {
 
 
 :root {
+  --backdrop: rgba(192,192,192, 0.9);
   --black: #000000;
   --grey: #c7c7c7;
   --paper: 	#fafafa;
   --secondary: #61dafb;
   --white: #fff;
   --ripeLemon: #f5c518;
+  --red: #ff0000;
 
   --zIndexHeader: 100;
 }

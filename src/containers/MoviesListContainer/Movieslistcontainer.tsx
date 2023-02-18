@@ -50,6 +50,8 @@ const MoviesListContainer = (): JSX.Element => {
       <MoviesListFilter genreOptions={genreOptions} initialValues={movieFilter} sortOptions={mappedSortOptions} onFilterReset={handleMovieListFilterReset} onFilterSubmit={handleMovieListFilter} />
       <div className={styles.movieListContainer}>{renderMovies()}</div>
       <Pagination currentPage={page} siblingCount={1} totalCount={data?.totalPages || 0} onPageChange={(page) => setSearchParams({ page: `${page}` })} />
+      
+
     </>
   )
 };

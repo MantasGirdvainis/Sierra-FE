@@ -10,7 +10,13 @@
     display: flex;
     justify-content: space-between;
     padding: 5px 50px;
+    gap: 10px;
     position: sticky;
     top:0;
     z-index: var(--zIndexHeader);
+}
+
+.items {
+    display: flex;
+    gap: 10px;
 }

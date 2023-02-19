@@ -32,16 +32,24 @@ const Header = (): JSX.Element => {
 
   return (
     <header className={styles.headerElement}>
-      <MyMoviesLogo className={styles.headerIcon} />
-      <>
-        {matches ? <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} /> : <NavigationLink name='Movies' to={RouteKey.Movies} /> }
+      <div>
+        <MyMoviesLogo className={styles.headerIcon} />
+      </div>
+      <div>
+        {matches ? <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} /> : (
+          <div className={styles.items}>
+            <NavigationLink name='Movies' to={RouteKey.Movies} />
+            <NavigationLink name="Signup" to={RouteKey.SignUp} />
+          </div>
+        )}
 
         {sidebarVisible && (
           <Sidebar onBackDropClick={closeSidebar}>
             <NavigationLink name="Movies" to={RouteKey.Movies} />
+            <NavigationLink name="Signup" to={RouteKey.SignUp} />
           </Sidebar>
         )}
-      </>
+      </div>
     </header>
   );
 };

@@ -1,15 +1,13 @@
-
 import { useState, useEffect } from 'react';
 import HamburgerButton from 'components/HamburgerButton/hamburgerButton';
 import Sidebar from 'components/Sidebar/Sidebar';
 import useMediaQuery from 'hooks/useMediaQuery';
-import NavigationLink from 'components/NavigationLink/navigationLink';
 import { RouteKey } from 'navigation/routes';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Header.module.css';
 import { MyMoviesLogo } from '../Icons';
-
-
+import { HeaderNavigation } from './HeaderNavigation';
 
 
 const Header = (): JSX.Element => {
@@ -32,16 +30,25 @@ const Header = (): JSX.Element => {
 
   return (
     <header className={styles.headerElement}>
-      <MyMoviesLogo className={styles.headerIcon} />
-      <>
-        {matches ? <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} /> : <NavigationLink name='Movies' to={RouteKey.Movies} /> }
+      <div>
+        <NavLink to={RouteKey.Index}>
+          <MyMoviesLogo className={styles.headerIcon} />
+        </NavLink>
+      </div>
+      <div>
+        {matches ? <HamburgerButton isActive={sidebarVisible} onClick={handleButtonClick} /> : (
+          <div className={styles.items}>
+            <HeaderNavigation />
+          </div>
+        )}
 
         {sidebarVisible && (
           <Sidebar onBackDropClick={closeSidebar}>
-            <NavigationLink name="Movies" to={RouteKey.Movies} />
+            <HeaderNavigation />
+
           </Sidebar>
         )}
-      </>
+      </div>
     </header>
   );
 };

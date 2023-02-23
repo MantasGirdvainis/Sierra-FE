@@ -1,0 +1,43 @@
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.label {
+    color: var(--darkGrey);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.field {
+    border: 1px solid var(--grey);
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+
+.error {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 5px;
+
+}
+
+.linkButton {
+    background: transparent;
+    color: var(--black);
+    padding: 0;
+}
+
+.linkButton:hover {
+    border-radius: 0;
+    text-decoration: 2px underline var(--secondary);
+    text-underline-offset: 2px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

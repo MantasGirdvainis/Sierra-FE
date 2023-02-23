@@ -1,13 +1,16 @@
+import { signUp } from "api/auth/auth";
+import { SignUpCredentials } from "api/auth/types";
+import Button from "components/Button/Button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
-import { SignUpCredentials } from "api/auth/types";
-import { signUp } from "api/auth/auth";
-import Button from "components/Button/Button";
 
 import styles from './signUpForm.module.css';
 
+type SignUpProps = {
+    handleClose: () => void
+}
 
-const SignUpForm = (): JSX.Element => {
+const SignUpForm = ({ handleClose }: SignUpProps): JSX.Element => {
 
     const initialValues = {
         name: '',
@@ -15,19 +18,18 @@ const SignUpForm = (): JSX.Element => {
         password: ''
     }
 
-
     const validationSchema = Yup.object({
         name: Yup.string().required('Required'),
         email: Yup.string().email('Invalid email format!').required('Required!'),
         password: Yup.string().required('Required!')
     })
 
-    const onSubmit = (values: SignUpCredentials) => {
+    const handleSubmit = (values: SignUpCredentials) => {
         signUp(values)
     }
 
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} >
             <Form >
                 <div className={styles.fieldWrapper}>
                     <label className={styles.label} htmlFor='name'>Full name</label>
@@ -49,10 +51,10 @@ const SignUpForm = (): JSX.Element => {
                     <ErrorMessage name='password'>
                         {errorMsg => <div className={styles.error}>{errorMsg}</div>}
                     </ErrorMessage>
-                    <div className={styles.buttons}>
-                        <Button className={styles.linkButton}>Cancel</Button>
-                        <Button type="submit">Confirm</Button>
-                    </div>
+                </div>
+                <div className={styles.buttons}>
+                    <Button className={styles.linkButton} onClick={handleClose}> Cancel</Button>
+                    <Button type="submit"> Confirm</Button>
                 </div>
             </Form>
 

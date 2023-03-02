@@ -9,3 +9,12 @@ export type SignUpCredentials = {
     name: string;
     email: string;
   };
+
+  export type SignInCredentials = {
+    email: string;
+    password: string;
+  };
+
+  export type SignInResponse = {
+    token: string;
+  };

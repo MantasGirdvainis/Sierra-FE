@@ -10,13 +10,15 @@ import Footer from './components/Footer/footer';
 function App(): JSX.Element {
 
   return (
-    <BrowserRouter>
-      <ProfileProvider>
+    
+    <ProfileProvider>
+      <BrowserRouter>
         <Layout footer={<Footer />} header={<Header />}>
           <MainRouter />
         </Layout>
-      </ProfileProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ProfileProvider>
+
   );
 }
 

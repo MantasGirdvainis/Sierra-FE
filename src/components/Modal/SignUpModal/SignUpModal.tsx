@@ -29,7 +29,7 @@ const SignUpmodal = (): JSX.Element => {
     return (
         <>
             <Button className={styles.linkButton} onClick={isLoggedIn ? signOut : handleOpen} >
-                {isLoggedIn ? 'Sign out' : 'Sing in/up'}
+                {isLoggedIn ? 'Sign out' : 'Sign in/up'}
             </Button>
             <Modal headerText={isSignInForm ? 'Please log-in' : 'Please sign-up'} isOpen={modalVisible}  >
                 <SignUpForm handleClose={handleClose} isSignInForm={isSignInForm} onFormTypeChange={handleFormChange} />

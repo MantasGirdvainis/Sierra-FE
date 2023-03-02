@@ -29,7 +29,6 @@ const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange }: SignUpProps
 
     const handleSubmit = (values: SignUpCredentials | SignInCredentials) => {
         {isSignInForm ? logIn(values) : signUp(values)  }
-        console.log(values)
         
     }
 

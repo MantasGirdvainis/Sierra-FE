@@ -41,3 +41,22 @@
     justify-content: flex-end;
     gap: 10px;
 }
+
+.formChangeText {
+    color: var(--black);
+    font-size: 12px;}
+
+.formChangeButton {
+    background: none;
+    color: var(--black);
+    margin-left: 5px;
+    padding: 0;
+}
+
+.formChangeButton:hover {
+    background: none;
+    color: var(--secondary);
+    margin-left: 5px;
+    padding: 0;
+    text-decoration: underline;
+}

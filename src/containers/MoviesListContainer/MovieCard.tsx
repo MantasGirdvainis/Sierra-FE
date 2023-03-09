@@ -13,19 +13,21 @@ const MovieCard = ({ title, voteAverage, releaseDate, posterPath, movieId }: Mov
     return (
         <div className={styles.movieCardWrapper}>
             <Link to={movieLink}>
-            <img alt={`${title}-movie-title`} className={styles.movieImage} loading='lazy' src={posterPath} />
+                <img alt={`${title}-movie-title`} className={styles.movieImage} loading='lazy' src={posterPath} />
             </Link>
-                <div className={styles.movieInfoWrapper}>
-                     <p className={styles.movieInfoParagraph}>
+            <div className={styles.movieInfoWrapper}>
+                <div>
+                    <p className={styles.movieInfoParagraph}>
                         <span className={styles.voteAverage}><StarIcon className={styles.icon} />{voteAverage}</span>
-                     </p>
+                    </p>
                     <p>
                         <span className={styles.filmTitle}>{title}</span>
-                     </p>
+                    </p>
                 </div>
-                    <p className={styles.voteAverage}>
-                        <span>{releaseDate}</span>
-                     </p>
+                <p className={styles.voteAverage}>
+                    <span>{releaseDate}</span>
+                </p>
+            </div>
         </div>
     )
 }

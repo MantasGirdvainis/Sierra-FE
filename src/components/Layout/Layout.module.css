@@ -1,8 +1,20 @@
-.horizontalMargin {
-    margin: 0 50px;
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.marginTop {
-    margin-top: 80px;
-    
+.contentMargin {
+    padding: 0 50px;
+}
+
+.mainContent {
+    flex-grow: 1;
+}
+
+.stickyContainer {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: var(--zIndexHeader);
 }

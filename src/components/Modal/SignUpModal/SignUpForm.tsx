@@ -1,5 +1,4 @@
-import { logIn, signUp } from "api/auth/auth";
-import { SignUpCredentials, SignInCredentials } from "api/auth/types";
+
 import Button from "components/Button/Button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
@@ -9,11 +8,19 @@ import styles from './signUpForm.module.css';
 type SignUpProps = {
     handleClose: () => void,
     isSignInForm: boolean,
-    onFormTypeChange: () => void
+    onFormTypeChange: () => void,
+    onSubmit: (values: LoginFormValues) => void;
 
-}
+};
 
-const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange }: SignUpProps): JSX.Element => {
+export type LoginFormValues = {
+    name?: string;
+    email: string;
+    password: string;
+  };
+
+const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange, onSubmit }: SignUpProps): JSX.Element => {
+
 
     const initialValues = {
         name: '',
@@ -21,21 +28,16 @@ const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange }: SignUpProps
         password: ''
     }
 
-    const validationSchema = Yup.object({
-        name: Yup.string().required('Required'),
+    const validationSchema = (isSignInForm?: boolean) => 
+    Yup.object({
+        ...(!isSignInForm && {name: Yup.string().required('Required') }),
         email: Yup.string().email('Invalid email format!').required('Required!'),
         password: Yup.string().required('Required!')
     })
 
-    const handleSubmit = (values: SignUpCredentials | SignInCredentials) => {
-        {isSignInForm ? logIn(values) : signUp(values)  }
-        
-    }
-
-    
 
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} >
+        <Formik initialValues={initialValues} validationSchema={validationSchema(isSignInForm)} onSubmit={onSubmit} >
             <Form >
                 {!isSignInForm &&
                     <div className={styles.fieldWrapper}>

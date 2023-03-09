@@ -1,13 +1,22 @@
+import { ReactNode } from 'react';
+import { parseMultipleClassNames } from 'utils/theme/styleUtils';
+
 import styles from './Layout.module.css';
 
-type Props = { header: string | JSX.Element; children: string | JSX.Element; footer: string | JSX.Element };
+type LayoutProps = {
+  children: ReactNode;
+  header: ReactNode;
+  footer: ReactNode;
+};
 
-export default function Layout({ children, header, footer }: Props): JSX.Element {
-  return (
-    <>
-      {header}
-      <main className={styles.marginTop}>{children}</main>
-      <footer className={styles.horizontalMargin}>{footer}</footer>
-    </>
-  );
-}
+const Layout = ({ children, header, footer }: LayoutProps): JSX.Element => (
+  <div className={styles.contentWrapper}>
+    <div className={parseMultipleClassNames([styles.contentMargin, styles.stickyContainer])}>{header}</div>
+    <div className={parseMultipleClassNames([styles.mainContent, styles.contentMargin])}>
+      <main>{children}</main>
+    </div>
+    <div className={styles.contentMargin}>{footer}</div>
+  </div>
+);
+
+export default Layout;

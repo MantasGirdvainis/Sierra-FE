@@ -25,6 +25,7 @@ const SignUpmodal = (): JSX.Element => {
         data: signInData,
         isLoading: signInLoading,
         isSuccess: signInSuccess,
+        error: isErrorSignIn,
         mutate: userSignIn,
 
     } = useMutation((credentials: SignInCredentials) => logIn(credentials));
@@ -33,6 +34,7 @@ const SignUpmodal = (): JSX.Element => {
         data: signUpData,
         isLoading: signUpLoading,
         isSuccess: signUpSuccess,
+        error: isErrorsignUp,
         mutate: userSignUp,
     } = useMutation((credentials: SignUpCredentials) => signUp(credentials));
 
@@ -76,8 +78,10 @@ const SignUpmodal = (): JSX.Element => {
                 {isLoggedIn ? 'Sign out' : 'Sign in/up'}
             </Button>
             <Modal headerText={isSignInForm ? 'Please log-in' : 'Please sign-up'} isOpen={modalVisible}>
-                {signUpSuccess && signUpData && <p>Welcome{signUpData.name}, please login with your new credentials</p>}
+                {signUpSuccess && signUpData && <p>Welcome, please login with your new credentials</p>}
                 {signInLoading || (signUpLoading && <Loader />)}
+                {isErrorSignIn && <p style={{color: 'red'}}>Incorrect email or password</p>}
+                {isErrorsignUp && <p style={{color: 'red'}}>User with email already exists.</p>}
                 <SignUpForm handleClose={handleClose} isSignInForm={isSignInForm} onFormTypeChange={handleFormChange} onSubmit={handleSubmit} />
             </Modal>
         </>

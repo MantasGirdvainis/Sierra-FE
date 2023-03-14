@@ -1,14 +1,32 @@
 import { StarIcon } from 'components/Icons';
 import { Link, generatePath } from 'react-router-dom';
 import { RouteKey } from 'navigation/routes';
+import { useMutation } from 'react-query';
+import { postPersonalMovie, deletePersonalMovie } from 'api/personalMovies/personalMoviesLib';
+import Favorite from 'components/Favorite/Favorite';
+import { useProfile } from 'providers/ProfileProvider';
 
 import { Movie } from '../../api/movies/types';
 import styles from './MovieCard.module.css';
 
+type MovieCardProps = {
+    myMoviesIds?: { movieId: number; _id: string | undefined }[];
+    movie: Movie;
+    onFavoriteClick?: () => void;
+  };
 
-const MovieCard = ({ title, voteAverage, releaseDate, posterPath, movieId }: Movie): JSX.Element => {
+const MovieCard = ({ movie, myMoviesIds, onFavoriteClick }: MovieCardProps): JSX.Element => {
 
+    const { id, posterPath, releaseDate, title, voteAverage, movieId } = movie;
+    const { isLoggedIn } = useProfile();
+    const { mutate: addPersonalMovie } = useMutation(postPersonalMovie, { onSuccess: onFavoriteClick });
+    const { mutate: removePersonalMovie } = useMutation(deletePersonalMovie, { onSuccess: onFavoriteClick });
+    const myMovieId = id || myMoviesIds?.find((myMovieId) => myMovieId.movieId === movieId)?._id;
     const movieLink = generatePath(RouteKey.Movie, { id: `${movieId}` });
+
+    const handleMovieAction = async () => {
+        myMovieId ? await removePersonalMovie(myMovieId) : await addPersonalMovie(movie);
+      };
 
     return (
         <div className={styles.movieCardWrapper}>
@@ -24,8 +42,9 @@ const MovieCard = ({ title, voteAverage, releaseDate, posterPath, movieId }: Mov
                         <span className={styles.filmTitle}>{title}</span>
                     </p>
                 </div>
-                <p className={styles.voteAverage}>
+                <p className={styles.releaseDate}>
                     <span>{releaseDate}</span>
+                    {isLoggedIn && <Favorite id={myMovieId} onClick={handleMovieAction}/>}
                 </p>
             </div>
         </div>

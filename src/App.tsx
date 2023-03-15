@@ -6,11 +6,10 @@ import ProfileProvider from 'providers/ProfileProvider';
 
 import Footer from './components/Footer/footer';
 
-
 function App(): JSX.Element {
 
   return (
-    
+
     <ProfileProvider>
       <BrowserRouter>
         <Layout footer={<Footer />} header={<Header />}>

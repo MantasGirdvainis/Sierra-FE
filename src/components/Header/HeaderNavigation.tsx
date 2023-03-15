@@ -1,29 +1,40 @@
 import { NavLink } from 'react-router-dom';
 import { parseMultipleClassNames } from 'utils/theme/styleUtils';
 import { SignUpmodal } from 'components/Modal/SignUpModal/SignUpModal';
-import { RouteKey } from 'navigation/routes';
+import { useProfile } from 'providers/ProfileProvider';
 
 import styles from './HeaderNavigation.module.css';
 
 type HeaderNavigationProps = {
+  navigationConfig: NavigationConfig[];
   listDirection?: 'row' | 'column';
 };
 
-export const HeaderNavigation = ({ listDirection }: HeaderNavigationProps): JSX.Element | null => {
+type NavigationConfig = {
+  to: string;
+  name: string;
+  private: boolean;
+};
 
-  return (
+export const HeaderNavigation = ({ navigationConfig, listDirection }: HeaderNavigationProps): JSX.Element | null => {
+
+  const { isLoggedIn } = useProfile();
+  const menuItems = isLoggedIn ? navigationConfig : navigationConfig.filter((i) => !i.private);
+
+  return navigationConfig.length ? (
     <nav>
       <ul className={listDirection === 'column' ? parseMultipleClassNames([styles.unorderedList, styles.columnAlign]) : styles.unorderedList}>
-
-        <li className={styles.listItem}>
-          <NavLink className={({ isActive }) => (isActive ? parseMultipleClassNames([styles.navLink, styles.isActive]) : styles.navLink)} to={RouteKey.Index}>
-            Movies
-          </NavLink>
-        </li>
+        {menuItems.map((navItem, index) => (
+          <li className={styles.listItem} key={index}>
+            <NavLink className={({ isActive }) => (isActive ? parseMultipleClassNames([styles.navLink, styles.isActive]) : styles.navLink)} to={navItem.to}>
+              {navItem.name}
+            </NavLink>
+          </li>
+        ))}
         <li className={styles.listItem}>
           <SignUpmodal />
         </li>
       </ul>
     </nav>
-  )
+  ) : null;
 };

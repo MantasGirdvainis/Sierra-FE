@@ -44,7 +44,8 @@
 
 .formChangeText {
     color: var(--black);
-    font-size: 12px;}
+    font-size: 12px;
+}
 
 .formChangeButton {
     background: none;

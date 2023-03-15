@@ -17,7 +17,7 @@ export type LoginFormValues = {
     name?: string;
     email: string;
     password: string;
-  };
+};
 
 const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange, onSubmit }: SignUpProps): JSX.Element => {
 
@@ -28,12 +28,12 @@ const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange, onSubmit }: S
         password: ''
     }
 
-    const validationSchema = (isSignInForm?: boolean) => 
-    Yup.object({
-        ...(!isSignInForm && {name: Yup.string().required('Required') }),
-        email: Yup.string().email('Invalid email format!').required('Required!'),
-        password: Yup.string().required('Required!')
-    })
+    const validationSchema = (isSignInForm?: boolean) =>
+        Yup.object({
+            ...(!isSignInForm && { name: Yup.string().required('Required') }),
+            email: Yup.string().email('Invalid email format!').required('Required!'),
+            password: Yup.string().required('Required!')
+        })
 
 
     return (
@@ -78,4 +78,4 @@ const SignUpForm = ({ handleClose, isSignInForm, onFormTypeChange, onSubmit }: S
     )
 };
 
-export { SignUpForm }
+export { SignUpForm };

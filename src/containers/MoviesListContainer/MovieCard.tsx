@@ -1,6 +1,5 @@
 import { StarIcon } from 'components/Icons';
 import { Link, generatePath } from 'react-router-dom';
-import { RouteKey } from 'navigation/routes';
 import { useMutation } from 'react-query';
 import { postPersonalMovie, deletePersonalMovie } from 'api/personalMovies/personalMoviesLib';
 import Favorite from 'components/Favorite/Favorite';
@@ -13,20 +12,20 @@ type MovieCardProps = {
     myMoviesIds?: { movieId: number; _id: string | undefined }[];
     movie: Movie;
     onFavoriteClick?: () => void;
-  };
+};
 
 const MovieCard = ({ movie, myMoviesIds, onFavoriteClick }: MovieCardProps): JSX.Element => {
 
-    const { id, posterPath, releaseDate, title, voteAverage, movieId } = movie;
+    const { _id, posterPath, releaseDate, title, voteAverage, movieId } = movie;
     const { isLoggedIn } = useProfile();
     const { mutate: addPersonalMovie } = useMutation(postPersonalMovie, { onSuccess: onFavoriteClick });
     const { mutate: removePersonalMovie } = useMutation(deletePersonalMovie, { onSuccess: onFavoriteClick });
-    const myMovieId = id || myMoviesIds?.find((myMovieId) => myMovieId.movieId === movieId)?._id;
-    const movieLink = generatePath(RouteKey.Movie, { id: `${movieId}` });
+    const myMovieId = _id || myMoviesIds?.find((myMovieId) => myMovieId.movieId === movieId)?._id;
+    const movieLink = generatePath('/movie/:id', { id: `${movieId}` });
 
     const handleMovieAction = async () => {
         myMovieId ? await removePersonalMovie(myMovieId) : await addPersonalMovie(movie);
-      };
+    };
 
     return (
         <div className={styles.movieCardWrapper}>
@@ -44,7 +43,7 @@ const MovieCard = ({ movie, myMoviesIds, onFavoriteClick }: MovieCardProps): JSX
                 </div>
                 <p className={styles.releaseDate}>
                     <span>{releaseDate}</span>
-                    {isLoggedIn && <Favorite id={myMovieId} onClick={handleMovieAction}/>}
+                    {isLoggedIn && <Favorite id={myMovieId} onClick={handleMovieAction} />}
                 </p>
             </div>
         </div>

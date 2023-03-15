@@ -1,4 +1,4 @@
-import  { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { parseMultipleClassNames } from '../../utils/theme/styleUtils';
 import styles from './NavigationLink.module.css'
@@ -9,16 +9,16 @@ type NavigationLinkProps = {
     to: string;
 }
 
-const NavigationLink = ({ additionalStyles = [], name, to}: NavigationLinkProps): JSX.Element => {
+const NavigationLink = ({ additionalStyles = [], name, to }: NavigationLinkProps): JSX.Element => {
     return (
         <span>
-            <NavLink className={({ isActive })=> 
-        isActive
-        ? parseMultipleClassNames([styles.navLink, styles.isActive, ...additionalStyles])
-        : parseMultipleClassNames([styles.navLink, ...additionalStyles])
-        }
-        
-        to={to}>
+            <NavLink className={({ isActive }) =>
+                isActive
+                    ? parseMultipleClassNames([styles.navLink, styles.isActive, ...additionalStyles])
+                    : parseMultipleClassNames([styles.navLink, ...additionalStyles])
+            }
+
+                to={to}>
                 {name}
             </NavLink>
         </span>

@@ -8,12 +8,12 @@ export const getSecurityHeaders = (): AxiosRequestConfig => ({
   },
 });
 
-export function get<T>(url: string): Promise<AxiosResponse<T>> {
-  return axios.get<T>(`${BASE_API_URL}/${url}`);
+export function get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  return axios.get<T>(`${BASE_API_URL}/${url}`, config);
 };
 
 export const post = <T, R>(url: string, body: T, config?: AxiosRequestConfig): Promise<AxiosResponse<R>> =>
   axios.post<R>(`${BASE_API_URL}/${url}`, body, config);
 
-  export const deleteRequest = <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> => 
+export const deleteRequest = <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
   axios.delete<T>(`${BASE_API_URL}/${url}`, config);

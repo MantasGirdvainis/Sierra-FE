@@ -6,6 +6,7 @@
   list-style: none;
   padding: 0;
 }
+
 .paginationItem {
   align-items: center;
   border: 1px solid var(--grey);
@@ -17,20 +18,24 @@
   min-width: 16px;
   padding: 5px;
 }
+
 .paginationItem:hover {
   background-color: var(--secondary);
   color: var(--white);
   fill: var(--white);
 }
+
 .arrowRight {
   height: 12px;
   width: 12px;
   transform: rotate(180deg);
 }
+
 .arrowLeft {
   height: 12px;
   width: 12px;
 }
+
 .button {
   background: none;
   border: none;

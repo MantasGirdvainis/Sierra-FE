@@ -32,9 +32,9 @@ const MoviesListContainer = (): JSX.Element => {
     refetch: refetchMyMovies,
   } = useQuery(['personal-movies'], getPersonalMovies, { enabled: isLoggedIn });
 
-  const myMoviesIds = personalMovies?.movies.map((movie) => ({ movieId: movie.movieId, _id: movie.id }));
+  const myMoviesIds = personalMovies?.movies.map((movie) => ({ movieId: movie.movieId, _id: movie._id }));
 
- 
+
   const mappedSortOptions = sortOptions?.map((sortOption) => ({ label: sortOption.name, value: sortOption.code })) || [];
 
   const genreOptions = genres?.map((genre) => ({ label: genre.name, value: `${genre.id}` })) || [];
@@ -52,7 +52,7 @@ const MoviesListContainer = (): JSX.Element => {
     refetch();
     refetchMyMovies();
   };
-  
+
 
   return (
     <>
@@ -69,7 +69,7 @@ const MoviesListContainer = (): JSX.Element => {
             <Loader />
           ) : (
             data?.movies.map((movie, index) => (
-              <MovieCard key={`movie-${movie.id}-${index}`} movie={movie} myMoviesIds={myMoviesIds} onFavoriteClick={handleMovieRefetch} />
+              <MovieCard key={`movie-${movie._id}-${index}`} movie={movie} myMoviesIds={myMoviesIds} onFavoriteClick={handleMovieRefetch} />
             ))
           )}
         </div>

@@ -9,4 +9,4 @@ export async function signUp(credentials: SignUpCredentials): Promise<SignUpResp
 export async function logIn(credentials: SignInCredentials): Promise<SignInResponse> {
   const { data } = await post<SignInCredentials, SignInResponse>('login', credentials);
   return data;
-}
+};
